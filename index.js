@@ -30,21 +30,58 @@ inquirer
         'View departments',
         "View employee roles",
         "View employees",
-        "Add a department?",
-        "Add a role?",
-        "Add an Employee?",
-        "Update an employee role?",
-        "Update employee's manager?",
-        "Remove employee?",
-        "Remove role?",
-        "Remove a department?",
-        "Quit?"
+        "Add a department",
+        "Add a role",
+        "Add an employee",
+        "Update an employee role",
+        "Update employee manager",
+        "Remove employee",
+        "Remove role",
+        "Remove department",
+        "Quit"
     ]
       }
   ])
   .then((answers) => {
-    // Use user feedback for... whatever!!
-  })
+    const {choices} = answers;
+    if (choices === "View departments") {
+        viewDepartments();
+    }
+    if (choices === "View employee roles") {
+        viewEmployeeRoles();
+    }
+    if (choices === "View employees") {
+        viewEmployees();
+    }
+    if (choices === "Add department") {
+        AddDepartment();
+    }
+    if (choices === "Add a role") {
+        addARole();
+    }
+    if (choices === "Add an employee") {
+        addAnEmployee();
+    }
+    if (choices === "Update an employee role") {
+        updateAnEmployeeRole();
+    }
+    if (choices === "Update employee manager") {
+        updateEmployeeManager();
+    }
+    if (choices === "Remove employee") {
+        removeEmployee();
+    }
+    if (choices === "Remove role") {
+        removeRole();
+    }
+    if (choices === "Remove department") {
+        removeDepartment();
+    }
+    if (choices === "Quit") {
+        connection.end();
+    }
+  });
+  };
   .catch((error) => {
     if (error.isTtyError) {
       // Prompt couldn't be rendered in the current environment
