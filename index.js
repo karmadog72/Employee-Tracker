@@ -1,7 +1,46 @@
-var inquirer = require("inquirer");
+const inquirer = require('inquirer');
+const cTable = require('console.table');
+const mysql = require("mysql2");
+const { connect } = require('http2');
+
+// create the connection to database
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password:"Bird2019!!",
+  database: "db"
+});
+
+connection.connect(err => {
+    if (err)
+throw err;
+console.log('connected')
+afterConnection();
+});
+
+// user question prompt
+const questionPrompt = () => {
 inquirer
   .prompt([
-    /* Pass your questions in here */
+      {
+    type:"list",
+    name:"options",
+    message: "Make a selection",
+    choices:[
+        'View departments',
+        "View employee roles",
+        "View employees",
+        "Add a department?",
+        "Add a role?",
+        "Add an Employee?",
+        "Update an employee role?",
+        "Update employee's manager?",
+        "Remove employee?",
+        "Remove role?",
+        "Remove a department?",
+        "Quit?"
+    ]
+      }
   ])
   .then((answers) => {
     // Use user feedback for... whatever!!
@@ -13,16 +52,6 @@ inquirer
       // Something else went wrong
     }
   });
-
-// get the client
-const mysql = require("mysql2");
-
-// create the connection to database
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  database: "test",
-});
 
 // simple query
 connection.query(
@@ -42,21 +71,23 @@ connection.query(
   }
 );
 
-// console tablet package
-// call once somewhere in the beginning of the app
-const cTable = require('console.table');
-console.table([
-  {
-    name: 'foo',
-    age: 10
-  }, {
-    name: 'bar',
-    age: 20
-  }
-]);
 
-// prints
-name  age
-----  ---
-foo   10
-bar   20
+
+// console tablet package-cTable
+const table = cTable.getTable([
+    {
+      name: 'foo',
+      age: 10
+    }, {
+      name: 'bar',
+      age: 20
+    }
+  ]);
+  
+  console.log(table);
+  
+  // prints
+  name  age
+  ----  ---
+  foo   10
+  bar   20
