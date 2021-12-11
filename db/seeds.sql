@@ -1,9 +1,9 @@
 -- Department
 
-INSERT INTO department (dpt_name)
+INSERT INTO department (dept_name)
 VALUES ("HR"),
        ("Engineering"),
-       ("Interns"),
+       ("Interns");
 
     --    Roles, Salary & dpt ID
 INSERT INTO employee_role(title, salary, dept_id)

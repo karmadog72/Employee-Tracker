@@ -14,7 +14,7 @@ CREATE TABLE employee_role (
   salary DECIMAL NOT NULL,
   dept_id INTEGER,
   INDEX dep_ind (dept_id),
-  CONSTRAINT fk_department FOREIGN KEY (dept_id) REFERENCES department(id) ON SET NULL  
+  CONSTRAINT fk_department FOREIGN KEY (dept_id) REFERENCES department(id) ON DELETE SET NULL  
 );
 -- EMPLOYEE TABLE 
 CREATE TABLE employee (
@@ -23,7 +23,7 @@ CREATE TABLE employee (
   last_name VARCHAR(30) NOT NULL,
   employee_role_id INTEGER,
   INDEX employee_role_id(employee_role_id),
-  CONSTRAINT fk_employee_role FOREIGN KEY (employee_role_id) REFERENCES employee_role_id ON DELETE SET NULL,
+  CONSTRAINT fk_employee_role FOREIGN KEY (employee_role_id) REFERENCES employee_role(id) ON DELETE SET NULL,
   manager_id INTEGER,
   INDEX manager_ind (manager_id),
   CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
