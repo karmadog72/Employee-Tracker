@@ -114,16 +114,10 @@ viewEmployeeRoles = () => {
 };
 
 viewEmployees = () => {
-  console.log("Displaying employees...\n");
-  const sql = `SELECT employee.id, 
-    employee.first_name, 
-    employee.last_name,
-    employee_role.title,
-    department.name AS department,
-    employee_role.salary,
-    FROM employee LEFT JOIN role ON employee.employee_role_id = employee_role.id
-    LEFT JOIN department ON employee_role.department_id = department.id
-    LEFT JOIN employee manager ON employee.manager_id = manager.id`;
+  console.log("Displaying employees");
+  const sql = `SELECT employee.id,employee.first_name,employee.last_name,employee_role.title,employee_role.salary FROM employee LEFT JOIN employee_role ON employee.employee_role_id = employee_role.id`;
+  // LEFT JOIN department ON employee_role.department_id = department.id
+  // LEFT JOIN employee manager ON employee.manager_id = manager.id`;
   connection.query(sql, (err, rows) => {
     if (err) throw err;
     console.table(rows);
@@ -194,23 +188,42 @@ addAnEmployee = () => {
         type: "input",
         name: "first",
         message: "Add a first name",
+        validate: (addFirstName) => {
+          if (addFirstName) {
+            return true;
+          } else {
+            return false;
+          }
+        },
       },
       {
         type: "input",
         name: "last",
         message: "Add a last name",
+        validate: (addLastName) => {
+          if (addLastName) {
+            return true;
+          } else {
+            return false;
+          }
+        },
       },
       {
         type: "input",
         name: "number",
         message: "Enter employee id",
       },
+      {
+        type: "input",
+        name: "manager",
+        message: "Enter manager number",
+      },
     ])
     .then((answers) => {
-      const { first, last, number } = answers;
+      const { first, last, number, manager } = answers;
       connection.query(
-        `INSERT INTO employee (first_name, last_name, employee_role_id) values (?, ?, ?)`,
-        [first, last, number],
+        `INSERT INTO employee (first_name, last_name, employee_role_id, manager_id) values (?, ?, ?, ?)`,
+        [first, last, number, manager],
         (err) => {
           if (err) throw err;
           console.table(first + " Successfully added ");
@@ -219,26 +232,3 @@ addAnEmployee = () => {
       );
     });
 };
-//answers = {
-//    title: "Senior Engineer",
-//    salary: 125000,
-//    ID: 3
-//}
-// console tablet package-cTable
-// const table = cTable.getTable([
-//     {
-//       name: 'foo',
-//       age: 10
-//     }, {
-//       name: 'bar',
-//       age: 20
-//     }
-//   ]);
-
-//   console.log(table);
-
-//   // prints
-//   name  age
-//   ----  ---
-//   foo   10
-//   bar   20
