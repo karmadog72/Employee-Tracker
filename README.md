@@ -1,7 +1,7 @@
-## Employee-Tracker
+# Employee-Tracker
 A way to track employees
 
-  # Table of Contents
+  ## Table of Contents
   1. [Description](#project-description)
   2. [LicenseType](#license)
   3. [Installation](#installation)
