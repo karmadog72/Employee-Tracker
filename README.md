@@ -25,5 +25,4 @@ A way to track employees
   ![Video-Link](https://)
 
   ## Image Example
-  ![Image-Example](![emptracker](https://user-images.githubusercontent.com/89046934/146455867-0023b7d8-b6b3-49ee-928a-9f6e74dd1ca0.PNG)
-)
+  ![Image-Example]![emptracker](https://user-images.githubusercontent.com/89046934/146456028-800f60cf-98a8-4db1-8a72-da42615707f1.PNG)
