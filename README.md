@@ -18,8 +18,8 @@ A way to track employees
   
   
   ## Questions
-  If you have any questions you can email me at ${data.email}
-  See all of my work at GitHub [${data.github}](https://github.com/karmadog72)
+  If you have any questions you can email me at https://www.linkedin.com/in/danika-pearson/
+  See all of my work at GitHub-(https://github.com/karmadog72)
  
   ## Video Walk Through
   ![Video-Link](https://)
