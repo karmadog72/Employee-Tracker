@@ -2,7 +2,7 @@
 A way to track employees
 
   ## Video Walk Through
-  ![Video-Link](https://watch.screencastify.com/v/cpjjelliW5unsBX7pWAM)
+  ![Video-Link]https://watch.screencastify.com/v/cpjjelliW5unsBX7pWAM
 
   ## Table of Contents
   1. [Description](#project-description)
